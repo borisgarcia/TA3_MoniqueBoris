@@ -2,9 +2,8 @@ package android.unitec.ta3_moniqueboris;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.InputType;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
@@ -28,8 +27,8 @@ public class ProfileActivity extends AppCompatActivity {
 
         Intent i = getIntent();
 
-        etIngresos.setText(i.getStringExtra(TransactionActivity.ingresos));
-        etEgresos.setText(i.getStringExtra(TransactionActivity.egresos));
+        //etIngresos.setText(i.getStringExtra(TransactActivity.EGRE));
+        //etEgresos.setText(i.getStringExtra(TransactActivity.INGRE));
 
     }
 
@@ -40,12 +39,14 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void Grafica(View view) {
+
         Intent go = new Intent(getBaseContext(), GraphActivity.class);
         startActivityForResult(go, 0);
     }
 
-    public void Transaction(View view) {
-        Intent go2 = new Intent(getBaseContext(), TransactionActivity.class);
+
+    public void transcaccion(View view) {
+        Intent go2 = new Intent(getBaseContext(), TransactActivity.class);
         startActivityForResult(go2, 0);
     }
 }

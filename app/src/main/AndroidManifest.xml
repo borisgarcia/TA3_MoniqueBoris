@@ -18,7 +18,7 @@
         <activity android:name=".SignUpActivity" />
         <activity android:name=".AutoLoginActivity" />
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".TransactionActivity" />
+        <activity android:name=".TransactActivity" />
         <activity android:name=".GraphActivity"></activity>
     </application>
 

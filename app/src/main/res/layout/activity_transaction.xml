@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="android.unitec.ta3_moniqueboris.TransactionActivity">
+    tools:context=".TransactActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -30,27 +30,15 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/spinner"
-        android:layout_below="@+id/etMonto"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="49dp"
-        android:spinnerMode="dropdown"
-        android:entries="@array/tipo"/>
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Aplicar"
         android:id="@+id/btAplicar"
-        android:layout_marginTop="49dp"
-        android:layout_below="@+id/spinner"
+        android:onClick="aplicar"
+        android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/textView4"
-        android:layout_toEndOf="@+id/textView4"
-        android:onClick="aplicar"/>
+        android:layout_toEndOf="@+id/textView4" />
 
     <Button
         android:layout_width="wrap_content"
@@ -61,5 +49,14 @@
         android:layout_toRightOf="@+id/etMonto"
         android:layout_toEndOf="@+id/etMonto"
         android:onClick="cancel"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:layout_below="@+id/etMonto"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="25dp" />
 
 </RelativeLayout>

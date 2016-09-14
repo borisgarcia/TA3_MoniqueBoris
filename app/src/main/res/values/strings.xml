@@ -1,7 +1,4 @@
 <resources>
     <string name="app_name">TA3_MoniqueBoris</string>
-    <string-array name="tipo">
-        <item>INGRESO</item>
-        <item>EGRESO</item>
-    </string-array>
+
 </resources>
