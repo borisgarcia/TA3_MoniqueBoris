@@ -1,9 +1,9 @@
 package android.unitec.ta3_moniqueboris;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
@@ -19,6 +19,7 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        LoadInt();
         etEmail = (EditText) (findViewById(R.id.editText));
         etIngresos = (EditText) (findViewById(R.id.editText2));
         etEgresos = (EditText) (findViewById(R.id.editText3));
@@ -29,27 +30,27 @@ public class ProfileActivity extends AppCompatActivity {
         Intent i = getIntent();
         ingresos += i.getIntExtra(TransactActivity.INGRESOS,0);
         egresos += i.getIntExtra(TransactActivity.EGRESOS,0);
+
+
+
         resta = ingresos - egresos;
         etEmail.setText(i.getStringExtra(LoginActivity.EMAIL));
-
-
+        etEgresos.setText(egresos+"");
+        etIngresos.setText(ingresos+"");
         etI_E.setText(resta+"");
 
-        load();
     }
 
-    public void SavePref(){
-        SharedPreferences sp = getSharedPreferences("Preferencias", Context.MODE_PRIVATE);
-        SharedPreferences.Editor edit = sp.edit();
-        edit.putString("Ingresos",etIngresos.getText().toString());
-        edit.putString("Egresos",etEgresos.getText().toString());
-        edit.commit();
+    public void SaveInt(String key, int value){
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putInt(key, value);
+        editor.commit();
     }
-
-    public void load(){
-        SharedPreferences sp = getSharedPreferences("Preferencias", Context.MODE_PRIVATE);
-        etIngresos.setText(sp.getString("Ingresos",""));
-        etEgresos.setText(sp.getString("Egresos",""));
+    public void LoadInt(){
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        ingresos = sp.getInt("Ingresos", 0);
+        egresos = sp.getInt("Egresos",0);
     }
 
     public void Grafica(View view) {
@@ -74,9 +75,8 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void Salvar(View view) {
-        SavePref("Ingresos", etIngresos.getText().toString());
-        SavePref("Egresos",Integer.parseInt(etIngresos.getText().toString());
-        finish();
+        SaveInt("Ingresos",ingresos);
+        SaveInt("Egresos",egresos);
     }
 
 
