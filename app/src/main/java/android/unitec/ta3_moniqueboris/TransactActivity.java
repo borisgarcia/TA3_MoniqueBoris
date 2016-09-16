@@ -15,9 +15,8 @@ public class TransactActivity extends AppCompatActivity {
     EditText etMonto;
     Spinner spinner;
     String opcion;
-    int egresos =0, ingresos=0;
-    static final String EGRE = "Egresos";
-    static final String INGRE = "Ingresos";
+    static final String INGRESOS = "ingresos";
+    static final String EGRESOS = "Egresos";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,25 +48,24 @@ public class TransactActivity extends AppCompatActivity {
     }
 
    public void aplicar(View view) {
-       Intent iPro = new Intent(getBaseContext(), ProfileActivity.class);
+       Intent intent = new Intent ( TransactActivity.this, ProfileActivity.class );
+       String error = "";
 
        int mont = Integer.parseInt(etMonto.getText().toString());
-
-            if (mont > 0) {
-                if(opcion.equals("ingresos"))
-                    ingresos += mont;
-
-                else if(opcion.equals("egresos"))
-                    egresos += mont;
-
-                startActivity(iPro);
-                iPro.putExtra(EGRE, egresos+"");
-                iPro.putExtra(INGRE, ingresos+"");
-            } else {
-                Toast.makeText(TransactActivity.this, "Ingrese un valor positivo", Toast.LENGTH_SHORT).show();
-            }
-
-
+       try {
+           if (mont > 0) {
+               if (opcion.equals("ingresos"))
+                   intent.putExtra (INGRESOS, mont );
+               else if (opcion.equals("egresos"))
+                   intent.putExtra (EGRESOS,mont );
+             startActivity(intent);
+           } else {
+               Toast.makeText(TransactActivity.this, "Ingrese un valor positivo", Toast.LENGTH_SHORT).show();
+           }
+       }
+       catch(Exception e) {
+           error = e.toString();
+       }
     }
 
 

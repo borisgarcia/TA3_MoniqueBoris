@@ -53,7 +53,7 @@
         android:layout_marginTop="38dp" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:ems="10"
@@ -61,7 +61,9 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:editable="false" />
+        android:editable="false"
+        android:layout_toEndOf="@+id/button"
+        android:layout_toRightOf="@+id/button" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -92,35 +94,39 @@
         android:layout_alignBottom="@+id/textView8"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/textView8" />
+        android:layout_toEndOf="@+id/textView8"
+        android:layout_alignLeft="@+id/editText3"
+        android:layout_alignStart="@+id/editText3"
+        android:layout_toRightOf="@+id/textView8" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:text="Grafica"
         android:id="@+id/button"
         android:onClick="Grafica"
-        android:layout_below="@+id/textView8"
-        android:layout_alignLeft="@+id/editText3"
-        android:layout_alignStart="@+id/editText3"
-        android:layout_marginTop="46dp" />
+        android:layout_alignTop="@+id/button2"
+        android:layout_toRightOf="@+id/button2"
+        android:layout_toEndOf="@+id/button2" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:text="Salvar"
         android:id="@+id/btnSalvar"
         android:layout_alignTop="@+id/button"
-        android:layout_alignRight="@+id/editText4"
-        android:layout_alignEnd="@+id/editText4" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="Salvar"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Transaccion"
         android:id="@+id/button2"
-        android:layout_alignTop="@+id/button"
-        android:layout_alignParentLeft="true"
         android:onClick="transcaccion"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/textView8"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="66dp" />
 </RelativeLayout>

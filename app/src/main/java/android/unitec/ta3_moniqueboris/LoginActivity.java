@@ -13,6 +13,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText etEmail,etPass;
     static final int CREAR_REQUEST = 0;
     static final String SHARED_PREFERENCES = "login";
+    static final String EMAIL = "email";
 
 
     @Override
@@ -34,8 +35,11 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(LoginActivity.this, "Ese usuario no existe", Toast.LENGTH_LONG).show();
         }
         else{
-            Intent go = new Intent(getBaseContext(),ProfileActivity.class);
-            startActivity(go);
+            Intent intent = new Intent ( LoginActivity.this, ProfileActivity.class );
+            intent.putExtra (EMAIL,etEmail.getText().toString());
+            startActivity(intent);
+
+
         }
     }
 
