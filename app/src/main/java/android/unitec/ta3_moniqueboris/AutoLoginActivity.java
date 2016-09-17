@@ -30,7 +30,10 @@ public class AutoLoginActivity extends AppCompatActivity {
 
     public void otra(View view){
         Intent intent = new Intent (getBaseContext(),LoginActivity.class);
+        boolean check = false;
+        intent.putExtra ("BOOLEAN", check );
         startActivity(intent);
+
 
     }
 }

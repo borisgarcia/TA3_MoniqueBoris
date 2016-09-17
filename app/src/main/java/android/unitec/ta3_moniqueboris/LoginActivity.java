@@ -26,12 +26,16 @@ public class LoginActivity extends AppCompatActivity {
         etPass = (EditText)findViewById(R.id.etPass);
         remem = (CheckBox)findViewById(R.id.cbRecord);
         CargarPreferencias();
+        Intent i = getIntent();
+        boolean check = i.getBooleanExtra("BOOLEAN",true);
 
-        /*if(remem.isChecked()){
+        if(remem.isChecked()&&check){
             Intent goAuto = new Intent(getBaseContext(),AutoLoginActivity.class);
             goAuto.putExtra(EMAIL,etEmail.getText().toString());
             startActivity(goAuto);
-        }*/
+        }
+
+        remem.setChecked(check);
 
     }
 
