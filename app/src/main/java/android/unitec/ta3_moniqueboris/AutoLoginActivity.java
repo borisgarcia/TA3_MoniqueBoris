@@ -10,12 +10,16 @@ public class AutoLoginActivity extends AppCompatActivity {
 
     TextView tvEmail;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auto_login);
 
         tvEmail = (TextView)findViewById(R.id.tvEmail);
+        String correo = getIntent().getStringExtra(LoginActivity.EMAIL);
+        tvEmail.setText(correo);
+
     }
 
 
@@ -25,7 +29,8 @@ public class AutoLoginActivity extends AppCompatActivity {
     }
 
     public void otra(View view){
-        Intent go2 = new Intent(getBaseContext(),LoginActivity.class);
-        startActivity(go2);
+        Intent intent = new Intent (getBaseContext(),LoginActivity.class);
+        startActivity(intent);
+
     }
 }

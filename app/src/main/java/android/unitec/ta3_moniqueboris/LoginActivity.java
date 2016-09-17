@@ -2,9 +2,10 @@ package android.unitec.ta3_moniqueboris;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -14,7 +15,7 @@ public class LoginActivity extends AppCompatActivity {
     static final int CREAR_REQUEST = 0;
     static final String SHARED_PREFERENCES = "login";
     static final String EMAIL = "email";
-
+    CheckBox remem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,14 @@ public class LoginActivity extends AppCompatActivity {
 
         etEmail = (EditText)findViewById(R.id.etEmail);
         etPass = (EditText)findViewById(R.id.etPass);
+        remem = (CheckBox)findViewById(R.id.cbRecord);
+        CargarPreferencias();
+
+        /*if(remem.isChecked()){
+            Intent goAuto = new Intent(getBaseContext(),AutoLoginActivity.class);
+            goAuto.putExtra(EMAIL,etEmail.getText().toString());
+            startActivity(goAuto);
+        }*/
 
     }
 
@@ -35,13 +44,30 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(LoginActivity.this, "Ese usuario no existe", Toast.LENGTH_LONG).show();
         }
         else{
+            GuardarPreferencias();
             Intent intent = new Intent ( LoginActivity.this, ProfileActivity.class );
             intent.putExtra (EMAIL,etEmail.getText().toString());
             startActivity(intent);
-
-
         }
     }
+
+    public void CargarPreferencias(){
+        SharedPreferences sp = getSharedPreferences(LoginActivity.SHARED_PREFERENCES,MODE_PRIVATE);
+        remem.setChecked(sp.getBoolean("CHECKBOX",false));
+        etEmail.setText(sp.getString("EMAIL",""));
+    }
+
+    public void GuardarPreferencias(){
+        SharedPreferences sp = getSharedPreferences(LoginActivity.SHARED_PREFERENCES,MODE_PRIVATE);
+        SharedPreferences.Editor edit = sp.edit();
+        boolean valor = remem.isChecked();
+        String email = etEmail.getText().toString();
+        edit.putBoolean("CHECKBOX",valor);
+        edit.putString("EMAIL",email);
+        edit.commit();
+    }
+
+
 
     public void signUp(View view){
         Intent go2 = new Intent(getBaseContext(),SignUpActivity.class);
