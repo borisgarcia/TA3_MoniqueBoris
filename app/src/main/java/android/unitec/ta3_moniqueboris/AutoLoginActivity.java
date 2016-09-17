@@ -9,6 +9,7 @@ import android.widget.TextView;
 public class AutoLoginActivity extends AppCompatActivity {
 
     TextView tvEmail;
+    static final String EMAIL2 = "Email";
 
 
     @Override
@@ -25,6 +26,7 @@ public class AutoLoginActivity extends AppCompatActivity {
 
     public void aceptar(View view){
         Intent go = new Intent(getBaseContext(),ProfileActivity.class);
+        go.putExtra (EMAIL2,tvEmail.getText().toString());
         startActivity(go);
     }
 

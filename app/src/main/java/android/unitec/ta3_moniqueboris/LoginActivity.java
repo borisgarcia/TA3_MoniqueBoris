@@ -32,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         if(remem.isChecked()&&check){
             Intent goAuto = new Intent(getBaseContext(),AutoLoginActivity.class);
             goAuto.putExtra(EMAIL,etEmail.getText().toString());
+
             startActivity(goAuto);
         }
 

@@ -35,6 +35,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         resta = ingresos - egresos;
         etEmail.setText(i.getStringExtra(LoginActivity.EMAIL));
+        etEmail.setText(i.getStringExtra(AutoLoginActivity.EMAIL2));
         etEgresos.setText(egresos+"");
         etIngresos.setText(ingresos+"");
         etI_E.setText(resta+"");
